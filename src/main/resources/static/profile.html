@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My profile — Campus Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container page-content">
+    <div class="form-card">
+      <h1>My profile</h1>
+      <div id="alert" class="alert" hidden></div>
+
+      <form id="profileForm">
+        <div class="field">
+          <label>Email</label>
+          <input id="email" type="email" disabled />
+        </div>
+        <div class="field">
+          <label for="fullName">Full name</label>
+          <input id="fullName" name="fullName" type="text" required maxlength="120" />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" />
+          </div>
+          <div class="field">
+            <label for="collegeName">College</label>
+            <input id="collegeName" name="collegeName" type="text" />
+          </div>
+        </div>
+        <div class="field">
+          <label for="hostelOrLocation">Hostel / location</label>
+          <input id="hostelOrLocation" name="hostelOrLocation" type="text" />
+        </div>
+        <button type="submit" class="btn btn-block">Save changes</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/profile.js"></script>
+</body>
+</html>

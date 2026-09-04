@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Campus Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container page-content">
+    <div class="section-heading">
+      <h1>Browse listings</h1>
+    </div>
+
+    <form id="searchForm" class="search-bar">
+      <input type="text" name="keyword" placeholder="Search books, electronics, furniture…" />
+      <select name="category">
+        <option value="">All categories</option>
+        <option value="BOOKS">Books</option>
+        <option value="ELECTRONICS">Electronics</option>
+        <option value="FURNITURE">Furniture</option>
+        <option value="STATIONERY">Stationery</option>
+        <option value="HOSTEL_ESSENTIALS">Hostel Essentials</option>
+        <option value="CLOTHING">Clothing</option>
+        <option value="SPORTS">Sports</option>
+        <option value="VEHICLES">Vehicles</option>
+        <option value="OTHER">Other</option>
+      </select>
+      <select name="condition">
+        <option value="">Any condition</option>
+        <option value="NEW">New</option>
+        <option value="LIKE_NEW">Like New</option>
+        <option value="GOOD">Good</option>
+        <option value="FAIR">Fair</option>
+      </select>
+      <input type="number" name="minPrice" placeholder="Min ₹" min="0" />
+      <input type="number" name="maxPrice" placeholder="Max ₹" min="0" />
+      <button type="submit" class="btn">Search</button>
+    </form>
+
+    <div id="resultsInfo" class="helper-text" style="margin-bottom: 12px"></div>
+    <div id="listingGrid" class="listing-grid"></div>
+    <div id="emptyState" class="empty-state" hidden>
+      <p>No listings match your search yet.</p>
+    </div>
+    <div id="pagination" class="pagination"></div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/home.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Listing — Campus Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container page-content">
+    <div id="alert" class="alert" hidden></div>
+    <div id="loading" class="spinner-row">Loading…</div>
+
+    <div id="detail" class="detail-grid" hidden>
+      <div>
+        <div class="detail-gallery-main">
+          <img id="mainImage" src="" alt="" hidden />
+        </div>
+        <div id="thumbs" class="detail-thumbs"></div>
+      </div>
+
+      <div class="detail-panel">
+        <span id="statusBadge" class="badge"></span>
+        <h1 id="title"></h1>
+        <div id="meta" class="listing-meta"></div>
+        <div id="price" class="detail-price"></div>
+        <p id="description" style="white-space: pre-wrap"></p>
+        <div id="location" class="listing-meta"></div>
+
+        <div id="ownerActions" class="detail-actions" hidden>
+          <a id="editLink" href="#" class="btn btn-secondary">Edit</a>
+          <select id="statusSelect" class="field" style="width: auto; padding: 9px 12px;">
+            <option value="AVAILABLE">Available</option>
+            <option value="RESERVED">Reserved</option>
+            <option value="SOLD">Sold</option>
+          </select>
+          <button id="deleteBtn" class="btn btn-danger">Delete</button>
+        </div>
+
+        <div id="buyerActions" class="detail-actions" hidden>
+          <button id="favoriteBtn" class="btn btn-secondary">☆ Save</button>
+        </div>
+
+        <div class="seller-box">
+          <div><strong id="sellerName"></strong></div>
+          <div class="listing-meta" id="sellerPhone"></div>
+        </div>
+
+        <form id="messageForm" hidden>
+          <div class="field" style="margin-top: 14px">
+            <label for="messageText">Message the seller</label>
+            <textarea id="messageText" rows="3" placeholder="Hi, is this still available?" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-block">Send message</button>
+        </form>
+        <div id="loginToMessage" class="helper-text" hidden>
+          <a href="/login.html">Log in</a> to message the seller or save this listing.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/listing-detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title id="pageTitle">Post an item — Campus Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container page-content">
+    <div class="form-card form-wide">
+      <h1 id="formHeading">Post an item for sale</h1>
+      <div id="alert" class="alert" hidden></div>
+
+      <form id="listingForm">
+        <div class="field">
+          <label for="title">Title</label>
+          <input id="title" name="title" type="text" required maxlength="150" placeholder="e.g. Data Structures Textbook (3rd Edition)" />
+        </div>
+        <div class="field">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" rows="4" required maxlength="4000" placeholder="Condition details, why you're selling, anything a buyer should know…"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="price">Price (₹)</label>
+            <input id="price" name="price" type="number" min="0" step="0.01" required />
+          </div>
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category" required>
+              <option value="">Select…</option>
+              <option value="BOOKS">Books</option>
+              <option value="ELECTRONICS">Electronics</option>
+              <option value="FURNITURE">Furniture</option>
+              <option value="STATIONERY">Stationery</option>
+              <option value="HOSTEL_ESSENTIALS">Hostel Essentials</option>
+              <option value="CLOTHING">Clothing</option>
+              <option value="SPORTS">Sports</option>
+              <option value="VEHICLES">Vehicles</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="condition">Condition</label>
+            <select id="condition" name="condition" required>
+              <option value="">Select…</option>
+              <option value="NEW">New</option>
+              <option value="LIKE_NEW">Like New</option>
+              <option value="GOOD">Good</option>
+              <option value="FAIR">Fair</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="location">Pickup location</label>
+            <input id="location" name="location" type="text" maxlength="150" placeholder="e.g. Block A Hostel" />
+          </div>
+        </div>
+
+        <button type="submit" id="submitBtn" class="btn btn-block">Publish listing</button>
+      </form>
+
+      <div id="imageSection" hidden>
+        <hr style="margin: 22px 0; border: none; border-top: 1px solid var(--color-border);" />
+        <label>Photos</label>
+        <div id="imageList" class="image-upload-row"></div>
+        <input type="file" id="imageInput" accept="image/png,image/jpeg,image/webp" />
+        <div class="helper-text">PNG, JPEG, or WEBP, up to 5MB each.</div>
+        <div style="margin-top: 16px">
+          <a id="doneLink" href="/my-listings.html" class="btn btn-secondary">Done</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/listing-form.js"></script>
+</body>
+</html>

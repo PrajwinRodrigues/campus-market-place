@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messages — Campus Marketplace</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div id="navbar"></div>
+
+  <div class="container page-content">
+    <div class="section-heading">
+      <h1>Messages</h1>
+    </div>
+    <div id="alert" class="alert" hidden></div>
+
+    <div class="messages-layout">
+      <div id="conversationList" class="conversation-list"></div>
+
+      <div id="threadPanel" class="thread-panel">
+        <div class="thread-header" id="threadHeader">Select a conversation</div>
+        <div class="thread-messages" id="threadMessages"></div>
+        <form id="composerForm" class="thread-composer" hidden>
+          <input type="text" id="composerInput" placeholder="Type a message…" required />
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/api.js"></script>
+  <script src="/js/nav.js"></script>
+  <script src="/js/messages.js"></script>
+</body>
+</html>

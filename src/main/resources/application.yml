@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: campus-marketplace
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/campus_marketplace?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true&allowPublicKeyRetrieval=true
+    username: ${DB_USERNAME:campus_app}
+    # No default here on purpose — the app refuses to start rather than fall
+    # back to a guessable password. Set DB_PASSWORD to whatever you chose
+    # when creating the campus_app MySQL user (see README).
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 10MB
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    # Override with a real secret via the JWT_SECRET env var before deploying anywhere real.
+    secret: ${JWT_SECRET:dev-only-change-me-campus-marketplace-secret-key-min-256-bits-long}
+    expiration-ms: ${JWT_EXPIRATION_MS:86400000} # 24h
+  upload:
+    dir: ${UPLOAD_DIR:uploads}
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.campusmarket: DEBUG
