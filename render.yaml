@@ -3,6 +3,7 @@ services:
     name: campus-marketplace
     runtime: docker
     plan: free
+    region: singapore
     healthCheckPath: /
     envVars:
       - key: SPRING_PROFILES_ACTIVE
