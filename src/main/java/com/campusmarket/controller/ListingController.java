@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class ListingController {
             @RequestParam(required = false) ListingStatus status,
             @RequestParam(required = false) BigDecimal minPrice,
             @RequestParam(required = false) BigDecimal maxPrice,
-            @PageableDefault(size = 20, sort = "createdAt") Pageable pageable) {
+            @PageableDefault(size = 20, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return listingService.search(keyword, category, condition, status, minPrice, maxPrice, pageable);
     }
 
@@ -61,7 +62,7 @@ public class ListingController {
     @GetMapping("/mine")
     @SecurityRequirement(name = "bearerAuth")
     public Page<ListingResponse> myListings(@AuthenticationPrincipal User currentUser,
-                                             @PageableDefault(size = 20, sort = "createdAt") Pageable pageable) {
+                                             @PageableDefault(size = 20, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable) {
         return listingService.getMyListings(currentUser, pageable);
     }
 
@@ -86,6 +87,8 @@ public class ListingController {
     public Map<String, String> uploadImage(@PathVariable Long id,
                                             @RequestParam("file") MultipartFile file,
                                             @AuthenticationPrincipal User currentUser) {
+        // Reject unauthorized uploads before writing an orphan file to disk.
+        listingService.assertCanModify(id, currentUser);
         String storedUrl = fileStorageService.store(file);
         listingService.addImage(id, storedUrl, currentUser);
         return Map.of("imageUrl", storedUrl);

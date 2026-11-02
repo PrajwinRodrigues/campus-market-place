@@ -97,6 +97,12 @@ public class ListingService {
         return imageUrl;
     }
 
+    @Transactional(readOnly = true)
+    public void assertCanModify(Long id, User currentUser) {
+        Listing listing = findOrThrow(id);
+        requireOwnerOrAdmin(listing, currentUser);
+    }
+
     @Transactional
     public void delete(Long id, User currentUser) {
         Listing listing = findOrThrow(id);

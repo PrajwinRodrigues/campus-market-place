@@ -1,0 +1,15 @@
+FROM maven:3.9.9-eclipse-temurin-17 AS build
+WORKDIR /workspace
+COPY pom.xml .
+COPY src ./src
+RUN mvn -B -DskipTests package
+
+FROM eclipse-temurin:17-jre
+WORKDIR /app
+COPY --from=build /workspace/target/campus-marketplace-0.0.1-SNAPSHOT.jar /app/app.jar
+RUN mkdir -p /data/uploads && chown -R 10001:10001 /app /data
+USER 10001:10001
+ENV SPRING_PROFILES_ACTIVE=prod
+ENV UPLOAD_DIR=/tmp/campus-marketplace-uploads
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "/app/app.jar"]

@@ -3,15 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Campus Marketplace</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <meta name="theme-color" content="#f7f7f2" />
+  <meta name="description" content="Buy and sell the things you need with people on your campus. Find books, electronics, furniture and more." />
+  <title>CampusMarket — good finds, close by</title>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div id="navbar"></div>
 
-  <div class="container page-content">
+  <main class="container page-content">
+    <section class="home-hero" aria-labelledby="heroTitle">
+      <div class="hero-copy">
+        <div class="hero-eyebrow">Your campus, in good company</div>
+        <h1 id="heroTitle">Good finds.<br><em>Close by.</em></h1>
+        <p>Give your useful things a second life. Find what you need from people who are just around the corner.</p>
+        <div class="hero-stats"><span>Made for student life</span><span>Meet nearby sellers</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="hero-note"><div class="note-icon">📚</div><strong>Someone's next favorite</strong><small>Great stuff, already around you.</small></div>
+      </div>
+    </section>
+
     <div class="section-heading">
-      <h1>Browse listings</h1>
+      <div><h1>Find your next good thing</h1><p>Browse pre-loved essentials from your campus community.</p></div>
+      <a href="/new-listing.html" class="btn btn-secondary">＋ Post an item</a>
     </div>
 
     <form id="searchForm" class="search-bar">
@@ -40,16 +55,19 @@
       <button type="submit" class="btn">Search</button>
     </form>
 
-    <div id="resultsInfo" class="helper-text" style="margin-bottom: 12px"></div>
+    <div id="resultsInfo" class="results-line"></div>
     <div id="listingGrid" class="listing-grid"></div>
     <div id="emptyState" class="empty-state" hidden>
-      <p>No listings match your search yet.</p>
+      <div class="empty-icon">⌕</div>
+      <h2>No listings yet</h2>
+      <p>Try another search, or be the first to share something useful with your campus.</p>
+      <a href="/new-listing.html" class="btn btn-secondary">＋ Post an item</a>
     </div>
     <div id="pagination" class="pagination"></div>
-  </div>
+  </main>
 
-  <script src="/js/api.js"></script>
-  <script src="/js/nav.js"></script>
-  <script src="/js/home.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/nav.js"></script>
+  <script src="js/home.js"></script>
 </body>
 </html>

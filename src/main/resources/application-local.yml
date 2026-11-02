@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:campus_marketplace;MODE=MySQL;DB_CLOSE_DELAY=-1;DATABASE_TO_LOWER=TRUE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    open-in-view: false
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+server:
+  port: 8080
+
+app:
+  jwt:
+    secret: local-only-campus-marketplace-signing-key-change-before-deploy
+    expiration-ms: 86400000
+  upload:
+    dir: uploads
+  cors:
+    allowed-origin-patterns: http://localhost:8080,http://127.0.0.1:8080
+
+logging:
+  level:
+    com.campusmarket: INFO

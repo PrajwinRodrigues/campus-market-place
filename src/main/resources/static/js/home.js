@@ -61,8 +61,15 @@
 
       renderPagination(result);
     } catch (err) {
-      resultsInfo.textContent = "";
-      grid.innerHTML = `<div class="empty-state">Couldn't load listings: ${CM.escapeHtml(err.message)}</div>`;
+      resultsInfo.textContent = "Marketplace unavailable";
+      grid.innerHTML = `
+        <div class="load-error">
+          <span class="load-error-icon" aria-hidden="true">↻</span>
+          <div><strong>We couldn't reach the marketplace</strong>
+          <p>Check your connection and try again in a moment.</p></div>
+          <button type="button" class="btn btn-secondary btn-sm" id="retryListings">Try again</button>
+        </div>`;
+      document.getElementById("retryListings").addEventListener("click", load);
     }
   }
 
